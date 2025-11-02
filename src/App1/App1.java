@@ -1,5 +1,6 @@
 package App1;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class App1 {
 		q.isEmpty();
 		Iterator<Integer> it  = q.iterator();
 	
-		
+//		Queue<String> testQ = new PriorityQueue<String>(Comparator.comparing( o -> o.hashCode())		
 	  if(IsValidString("bba b c b abb"))
 	  {
 		  System.out.println("Valid");
