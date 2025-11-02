@@ -1,4 +1,4 @@
-package App1;
+package Easy;
 
 import java.util.Stack;
 

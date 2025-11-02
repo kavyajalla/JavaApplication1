@@ -1,4 +1,4 @@
-package App1;
+package Easy;
 
 public class FirstLetterToAppearTwice {
 	 public char repeatedCharacter(String s) {
