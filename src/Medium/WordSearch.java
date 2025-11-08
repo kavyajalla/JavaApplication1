@@ -37,7 +37,7 @@ class WordSearch {
 	}
 }
 
-/*
+/**
  * 79. Word Search
 Solved
 Medium

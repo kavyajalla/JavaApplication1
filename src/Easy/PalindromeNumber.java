@@ -37,7 +37,7 @@ public class PalindromeNumber {
 	    */
 }
 
-/*
+/**
  * 9. Palindrome Number
 Solved
 Easy
