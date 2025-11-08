@@ -33,7 +33,7 @@ public class FirstLetterToAppearTwice {
 }
 
 
-/*
+/**
  * 2351. First Letter to Appear Twice
 Solved
 Easy
