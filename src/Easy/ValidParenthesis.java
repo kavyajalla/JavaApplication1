@@ -42,9 +42,60 @@ public class ValidParenthesis {
 
         return false;
     }
-    
 }
 
+/*
+ *
+ * public boolean isValid(String s) {
+        Stack<Character> st = new Stack<>();
+        for(int i=0; i<s.length(); i++)
+        {
+            char c = s.charAt(i);
+            char t = ' ';
+            if(!st.isEmpty())
+            {
+                t = st.peek();
+            }
+
+            if(c == ')')
+            {
+                if(t != '(')
+                {
+                    return false;
+                }
+                st.pop();
+            }
+            else if(c == ']')
+            {
+                if(t != '[')
+                {
+                    return false;
+                }
+                st.pop();
+            }
+            else if(c == '}')
+            {
+                if(t != '{')
+                {
+                    return false;
+                }
+                st.pop();
+            }
+            else if(c == '(' || c == '{' || c == '[')
+            {
+                st.add(c);
+            }
+        }
+
+        if(st.isEmpty())
+        {
+            return true;
+        }
+
+        return false;
+    }
+ * 	
+ */
 /**
 20. Valid Parentheses
 Solved
