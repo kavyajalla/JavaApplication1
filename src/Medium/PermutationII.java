@@ -9,11 +9,11 @@ public class PermutationII {
 	        Arrays.sort(nums);
 	        boolean[] visited = new boolean[nums.length];
 	        List<List<Integer>> result = new ArrayList<List<Integer>>();
-	        dfs(nums, visited, new ArrayList<Integer>(), result);
+	        backtracking(nums, visited, new ArrayList<Integer>(), result);
 	        return result;
 	    }
 
-	    void dfs(int[] nums, boolean[] visited, List<Integer> curr, List<List<Integer>> result)
+	    void backtracking(int[] nums, boolean[] visited, List<Integer> curr, List<List<Integer>> result)
 	    {
 	        if(curr.size() == nums.length)
 	        {
@@ -37,7 +37,7 @@ public class PermutationII {
 
 	            visited[i] = true;
 	            curr.add(nums[i]);
-	            dfs(nums, visited, curr, result);
+	            backtracking(nums, visited, curr, result);
 
 	            curr.remove(curr.size()-1);
 	            visited[i] = false;

@@ -8,11 +8,11 @@ public class Permutations {
 	public List<List<Integer>> permute(int[] nums) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		boolean[] visited = new boolean[nums.length];
-		dfs(nums, new ArrayList<Integer>(), visited, result);
+		backtracking(nums, new ArrayList<Integer>(), visited, result);
 		return result;
 	}
 	
-	void dfs(int[] nums, List<Integer> curr, boolean[] visited, List<List<Integer>> result)
+	void backtracking(int[] nums, List<Integer> curr, boolean[] visited, List<List<Integer>> result)
 	{
 		if(curr.size() == nums.length)
 		{
@@ -29,7 +29,7 @@ public class Permutations {
 			
 			visited[i] = true;
 			curr.add(nums[i]);
-			dfs(nums, curr, visited, result);
+			backtracking(nums, curr, visited, result);
 			
 			curr.remove(curr.size()-1); //backtracking, so removing 1 element to go back and evaluated other choices for it
 			visited[i] = false;
