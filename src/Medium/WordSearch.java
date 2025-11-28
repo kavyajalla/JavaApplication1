@@ -8,7 +8,10 @@ class WordSearch {
 		{
 			for(int j=0; j<board[i].length; j++)
 			{
-				dfs(board, i, j, word, 0);
+				if(dfs(board, i, j, word, 0))
+				{
+					return true;
+				}
 			}
 		}
 		return false;
