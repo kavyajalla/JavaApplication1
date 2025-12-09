@@ -87,3 +87,53 @@ n == grid[i].length
 1 <= m, n <= 50
 grid[i][j] is either 0 or 1
 */
+
+class MaxAreaOfIslandPractice {
+	public int maxAreaOfIslandPractice(int[][] grid) {
+		int max = 0;
+		Queue<int[]> q = new LinkedList();
+		int[][] dirs = new int[][] {{1,0},{-1,0},{0,1},{0,-1}};
+		for(int i=0; i<grid.length; i++)
+		{
+			for(int j=0; j<grid[0].length; j++)
+			{
+				if(grid[i][j] == 0)
+				{
+					continue;
+				}
+				
+				int area = 0;
+				if(grid[i][j] == 1)
+				{
+					q.offer(new int[] {i,j});
+					grid[i][j] = 0;
+				}
+				
+				while(!q.isEmpty())
+				{
+					int[] curr = q.poll();
+					int x = curr[0];
+					int y = curr[1];
+
+					area++;
+					
+					
+					for(int k=0; k<dirs.length; k++)
+					{
+						int x1 = dirs[k][0]+x;
+						int y1 = dirs[k][1]+y;
+						if(x1>=0 && x1<grid.length && y1>=0 && y1<grid[0].length && grid[x1][y1] == 1)
+						{
+							q.offer(new int[] {x1,y1});
+							grid[x1][y1] = 0;
+						}
+					}
+				}
+				
+				max = Math.max(area, max);
+			}
+		}
+		
+		return max;
+	}
+}

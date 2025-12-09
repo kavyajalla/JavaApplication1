@@ -66,3 +66,36 @@ Returns the value associated with the given path.
 
 Returns -1 if the path doesn’t exist.
 */
+
+class FileSystemPractice{
+	Map<String, Integer> paths;
+	public FileSystemPractice() {
+		paths = new HashMap<String, Integer>();
+		paths.put("", -1);
+	}
+	
+	boolean createPath(String path, int value)
+	{
+		char c = path.charAt(0);
+		if(c != '/')
+		{
+			return false;
+		}
+		int lastIndex = path.lastIndexOf('/');
+		if(!paths.containsKey(path.substring(0, lastIndex)))
+		{
+			return false;
+		}
+		if(paths.containsKey(path))
+		{
+			return false;
+		}
+		paths.put(path, value);
+		return true;
+	}
+	
+	int get(String path)
+	{
+		return paths.get(path);
+	}
+}
