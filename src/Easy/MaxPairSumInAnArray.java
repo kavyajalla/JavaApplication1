@@ -42,6 +42,45 @@ public class MaxPairSumInAnArray {
 	        return max;
 	    }
 }
+/*Alternate
+ * public int maxSum(int[] nums) {
+    int[][] top2 = new int[10][2]; // for digits 0-9
+    for (int i = 0; i < 10; i++) {
+        top2[i][0] = top2[i][1] = -1;
+    }
+
+    for (int num : nums) {
+        int d = largestDigit(num);
+        
+        // update the top 2 max values for this digit
+        if (num > top2[d][0]) {
+            top2[d][1] = top2[d][0];
+            top2[d][0] = num;
+        } else if (num > top2[d][1]) {
+            top2[d][1] = num;
+        }
+    }
+
+    int result = -1;
+
+    for (int d = 0; d < 10; d++) {
+        if (top2[d][1] != -1) {
+            result = Math.max(result, top2[d][0] + top2[d][1]);
+        }
+    }
+
+    return result;
+}
+
+int largestDigit(int num) {
+    int max = 0;
+    while (num > 0) {
+        max = Math.max(max, num % 10);
+        num /= 10;
+    }
+    return max;
+}
+ */
 
 /**
  * 2815. Max Pair Sum in an Array
