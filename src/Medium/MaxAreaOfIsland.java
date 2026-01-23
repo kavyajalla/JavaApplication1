@@ -137,3 +137,39 @@ class MaxAreaOfIslandPractice {
 		return max;
 	}
 }
+
+class MaxIslamd2 {
+	public int area(int[][] grid) {
+		Queue<int[]> q = new LinkedList();
+		int max = 0;
+		int area = 0;
+		int[][] d = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
+		for(int i=0 ;i<grid.length; i++) {
+			for(int j=0; j< grid[0].length; j++) {
+				if(grid[i][j] == 0) {
+					continue;
+				}
+				if(grid[i][j] == 1) {
+					q.offer(new int[] {i,j});
+					grid[i][j] = 0;
+				}
+				area = 0;
+				while(!q.isEmpty()) {
+					area++;
+					int[] rc = q.poll();
+					
+					for(int k=0; k<d.length; k++) {
+						int r1 = d[k][0]+rc[0];
+						int c1 = d[k][1]+rc[1];
+						if(r1>=0 && r1<grid.length && c1>=0 && c1<grid[0].length && grid[r1][c1]==1) {
+							q.offer(new int[] {r1,c1});
+							grid[r1][c1] = 0;
+						}
+					}
+				}
+				max = Math.max(area, max);
+			}
+		}
+		return max;
+	}
+}

@@ -1,4 +1,4 @@
-package Easy;
+package Concepts;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -7,6 +7,10 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * main
@@ -56,7 +60,36 @@ public class App1 {
 	  else
 	  {
 		  System.out.println("Invalid");
-	  } 	  
+	  } 	
+	  
+	  
+	  MyThread1 thread1 = new MyThread1(); //extends thread
+	  thread1.start(); //starts thread execution
+	  
+	  MyThread2 thread2 = new MyThread2(); //Runnable interface
+	  Thread t2 = new Thread(thread2);
+	  t2.start(); //starts thread execution
+	  
+	  Runnable myRunnable = () -> {
+		  System.out.println("Task that can be executed bya thread");
+	  };
+	  
+	  FutureTask<String> futureTask = new FutureTask<>(myRunnable, "Task finished"); //async 
+	  
+	  ExecutorService executor = Executors.newSingleThreadExecutor();
+	  executor.execute(futureTask);;
+//	  executor.execute(thread2);
+	  
+	  if(futureTask.isDone()) {
+		  try {
+			  String result = futureTask.get(); //gets "Task finished"
+			  System.out.println(result);
+		  } catch (Exception e) {
+			  //handle exception
+		  }
+	  }
+	  
+	  executor.shutdown();
   }
   
   static boolean IsValidString(String s)

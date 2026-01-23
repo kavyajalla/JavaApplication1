@@ -103,3 +103,20 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
  */
 
+class RepSol {
+	public int repChar(String s) {
+		int repIndex = -1;
+		Map<Character, Integer> map = new HashMap();
+		int max = -1;
+		for(int i=0; i<s.length(); i++) {
+			char c = s.charAt(i);
+			if(map.containsKey(c)) {
+				repIndex = Math.max(map.get(c), repIndex);
+			}
+			map.put(c, i+1);
+			max = Math.max(max, i-repIndex+1);
+		}
+		return max;
+	}
+}
+

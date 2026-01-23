@@ -92,3 +92,30 @@ Constraints:
 nums[i] is either 0 or 1.
 0 <= k <= nums.length
 */
+
+class Max1Sol {
+	public int max1s(int[] arr, int k) {
+		int st = 0;
+		int count = 0;
+		int max = 0;
+		int len = 0;
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i] == 0) {
+				count++;
+			}
+			while(count > k) {
+				if(arr[st] == 0) {
+					count--;
+				}
+				
+				st++;
+			}
+			if(count <= k) {
+				len = i-st+1;
+				max = Math.max(max, len);
+			}
+		}
+		
+		return max;
+	}
+}

@@ -49,3 +49,28 @@ Example 2:
 Input: n = 1
 Output: ["()"]
 */
+
+
+
+class SolParenthesis {
+	public List<String> generate(int n) {
+		List<String> result = new ArrayList();
+		dfs(n, 0, 0,"", result);
+		return result;
+	}
+	
+	void dfs(int n, int open, int close, String curr, List<String> result) {
+		if(curr.length() == 2*n) {
+			result.add(curr);
+		}
+		
+		if(open < n) {
+			dfs(n, open+1, close, curr + "(", result);
+		}
+		
+		if(close < open) {
+			dfs(n, open, close+1, curr + ")", result);
+		}
+	}
+}
+

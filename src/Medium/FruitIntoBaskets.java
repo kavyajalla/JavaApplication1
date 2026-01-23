@@ -75,3 +75,25 @@ Constraints:
 1 <= fruits.length <= 105
 0 <= fruits[i] < fruits.length
 */
+class Sol {
+	public int solve(int[] fruits) {
+		Map<Integer, Integer> freq = new HashMap();
+		int st = 0;
+		int max = 0;
+		for(int i=0; i<fruits.length; i++) {
+			int n = fruits[i];
+			freq.put(n, freq.getOrDefault(n, 0)+1);
+			while(freq.size()>2) {
+				int rem = freq.get(st);
+				freq.put(rem, freq.get(rem) - 1);
+				if(freq.get(rem) == 0) {
+					freq.remove(rem);
+				}
+				st++;
+			}
+			
+			max = Math.max(max, i-st+1);
+		}
+		return max;
+	}
+}
