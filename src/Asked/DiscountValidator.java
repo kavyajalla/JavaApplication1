@@ -234,7 +234,8 @@ A customer can have multiple discounts assigned to them and the same Discount ca
 We must validate that:
 1. No Customer has more than 3 discounts assigned to them
 2. Every discount must be assigned to at least one customer
-3. No Customer can have a total discount value more than 20% of their yearly spend 4. Customers must have a higher total discount value than other customers with lower yearly spends
+3. No Customer can have a total discount value more than 20% of their yearly spend 
+4. Customers must have a higher total discount value than other customers with lower yearly spends
 Example of 4.
 Spend by customer:
 A: $100
