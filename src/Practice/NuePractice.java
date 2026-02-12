@@ -39,6 +39,10 @@ class Bundle implements Component {
 		products.add(p);
 	}
 	
+	public List<Component> getChild() {
+		return products;
+	}
+	
 	@Override
 	public String getName() {
 		return name;
@@ -59,7 +63,7 @@ class ProrationEngine {
 	
 	public BigDecimal deltaCalculator(Component oldPlan, Component newPlan, LocalDate planChangeDate, LocalDate planEndDate) {
 		long totalDaysInMonth = planChangeDate.lengthOfMonth();
-		long remainingDays = ChronoUnit.DAYS.between(planEndDate, planChangeDate) + 1;
+		long remainingDays = ChronoUnit.DAYS.between(planChangeDate, planEndDate) + 1;
 		
 		//Gives price difference for entire plan period
 		BigDecimal priceDifference = newPlan.getPrice().subtract(oldPlan.getPrice());
@@ -93,4 +97,23 @@ class ProrationEngine {
  * The Formula: $$\text{Total Charge} = (\text{New Daily Rate} \times \text{Remaining Days}) - (\text{Old Daily Rate} \times \text{Remaining Days})$$
 */
 
+
+class CalculateRawTotal {
+	public BigDecimal calulateRawPriceNoDiscounts(Component c) {
+		BigDecimal price = BigDecimal.ZERO;
+		if(c instanceof Product) {
+			return c.getPrice();
+		}
+		if(c instanceof Bundle) {
+			BigDecimal sum = BigDecimal.ZERO;
+			Bundle bun = (Bundle)c;
+			for(Component b : bun.getChild()) {
+				sum = sum.add(b.getPrice());
+			}
+			return sum;
+		}
+		
+		return price;
+	}
+}
 
