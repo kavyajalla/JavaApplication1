@@ -153,3 +153,49 @@ class Sol1 {
 	}
 }
 
+
+
+class Practice1 {
+	public List<Integer> listAnagrams(String s, String p) {
+		int[] sFreq = new int[26];
+		int[] pFreq = new int[26];
+		
+		for(int i=0; i<p.length(); i++) {
+			char c = p.charAt(i);
+			pFreq[c-'a']++;
+		}
+		
+		for(int i=0; i<p.length(); i++) {
+			char c = s.charAt(i);
+			sFreq[c-'a']++;
+		}
+		
+		List<Integer> l = new ArrayList();
+		
+		if(isAnagram(sFreq, pFreq)) {
+			l.add(0);
+		}
+		int st = p.length();
+		for(int i=p.length(); i<s.length(); i++) {
+			char c = s.charAt(i);
+			char d = s.charAt(i-st);
+			sFreq[c-'a']++;
+			sFreq[d-'a']--;
+			if(isAnagram(sFreq, pFreq)) {
+				l.add(i-st+1);
+			}
+		}
+		
+		return l;
+ 	}
+	
+	boolean isAnagram(int[] s, int[] p) {
+		for(int i=0;i<s.length; i++) {
+			if(s[i]!=p[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
+
