@@ -46,3 +46,44 @@ Modified version of Q1. You are now given a starting cell, which is on one corne
  You have to reach any other passable cell that is on the corner of the grid, which has the minimum distance from the starting cell. 
  Return the coordinates of the destination cell. Return -1 if not possible
 */
+//ChatGPT solution
+/*
+public static int[] nearestCorner(String[][] grid, int startRow, int startCol) {
+    int m = grid.length;
+    int n = grid[0].length;
+
+    boolean[][] visited = new boolean[m][n];
+    Queue<int[]> queue = new LinkedList<>();
+    queue.add(new int[]{startRow, startCol});
+    visited[startRow][startCol] = true;
+
+    int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
+
+    while (!queue.isEmpty()) {
+        int[] curr = queue.poll();
+        int r = curr[0];
+        int c = curr[1];
+
+        if ((r == 0 || r == m-1) &&
+            (c == 0 || c == n-1) &&
+            !(r == startRow && c == startCol)) {
+            return new int[]{r, c};
+        }
+
+        for (int[] d : dirs) {
+            int nr = r + d[0];
+            int nc = c + d[1];
+
+            if (nr >= 0 && nr < m && nc >= 0 && nc < n &&
+                !visited[nr][nc] &&
+                grid[nr][nc].equals("0")) {
+                visited[nr][nc] = true;
+                queue.add(new int[]{nr, nc});
+            }
+        }
+    }
+
+    return new int[]{-1};
+}
+
+*/

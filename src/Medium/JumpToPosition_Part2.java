@@ -44,5 +44,38 @@ public class JumpToPosition_Part2 {
 /**
 Q2. Modified version of Q1. Players move by rolling a die as many times as they wish to, 
 and the goal is to determine if they can reach the last square on the board from a given starting position.
+*/
+//ChatGPT solution
+/*
+public static boolean canReachEnd(
+int start,
+int end,
+int diceSides,
+Map<Integer, Integer> teleporters) {
 
+Queue<Integer> queue = new LinkedList<>();
+Set<Integer> visited = new HashSet<>();
+queue.add(start);
+visited.add(start);
+
+while (!queue.isEmpty()) {
+int pos = queue.poll();
+if (pos == end) return true;
+
+for (int roll = 1; roll <= diceSides; roll++) {
+    int next = pos + roll;
+
+    if (teleporters.containsKey(next)) {
+        next = teleporters.get(next);
+    }
+
+    if (!visited.contains(next) && next <= end) {
+        visited.add(next);
+        queue.add(next);
+    }
+}
+}
+
+return false;
+}
 */

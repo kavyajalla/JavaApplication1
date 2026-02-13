@@ -35,3 +35,27 @@ You are playing a board game (1-D array) where the player moves by rolling a die
   The starting and ending squares are given as well. Return a distinct list of positions where the player can potentially jump to.
 */
 //Karat Glassdoor question
+//ChhatGPT solution
+/*
+ * public static Set<Integer> possibleMoves(
+        int start,
+        int diceSides,
+        Map<Integer, Integer> teleporters,
+        int boardEnd) {
+
+    Set<Integer> result = new HashSet<>();
+
+    for (int roll = 1; roll <= diceSides; roll++) {
+        int next = start + roll;
+        if (next > boardEnd) continue;
+
+        if (teleporters.containsKey(next)) {
+            next = teleporters.get(next);
+        }
+
+        result.add(next);
+    }
+
+    return result;
+}
+*/
