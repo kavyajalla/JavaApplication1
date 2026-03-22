@@ -91,3 +91,34 @@ The pivot index is 0.
 Left sum = 0 (no elements to the left of index 0)
 Right sum = nums[1] + nums[2] = 1 + -1 = 0
 */
+
+class Sol4 {
+	public int pivot(int[] arr) {
+		int lsum = 0;
+		int rsum = 0;
+		int sum = 0;
+		for(int i=0; i<arr.length; i++) {
+			sum = sum + arr[i];
+		}
+		
+		for(int i=0; i<arr.length; i++) {
+			if(i==0) {
+				lsum = 0;
+			} else {
+				lsum = lsum + arr[i-1];
+			}
+			
+			if(i == arr.length-1) {
+				rsum = 0;
+			} else {
+				rsum = sum - lsum - arr[i];
+			}
+			
+			if(lsum == rsum) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+}

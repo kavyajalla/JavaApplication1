@@ -66,3 +66,17 @@ Constraints:
 1 <= prices.length <= 105
 0 <= prices[i] <= 104
 */
+class Sol3 {
+	int maxProfit(int[] stocks) {
+		int buy = stocks[0];
+		int max = 0;
+		
+		for(int i=1; i<stocks.length; i++) {
+			int diff = stocks[i] - buy;
+			buy = Math.min(buy, stocks[i]);
+			max = Math.max(max, diff);
+		}
+		
+		return max;
+	}
+}

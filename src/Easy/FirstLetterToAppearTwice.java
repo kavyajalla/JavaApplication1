@@ -1,5 +1,8 @@
 package Easy;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class FirstLetterToAppearTwice {
 	 public char repeatedCharacter(String s) {
 	        boolean[] seen = new boolean[26];
@@ -74,3 +77,27 @@ s consists of lowercase English letters.
 s has at least one repeated letter.
  * 
  */
+
+class Sol5{
+	char test(String s) {
+		Set<Character> seen = new HashSet<Character>();
+		for(int i=0; i<s.length(); i++) {
+			if(seen.contains(s.charAt(i))) {
+				return s.charAt(i);
+			}
+		}
+		return ' ';
+	}
+	
+	char test2(String s){
+		boolean[] seen = new boolean[26];
+		for(int i=0; i<s.length(); i++) {
+			char c = s.charAt(i);
+			if(seen[c-'a']) {
+				return c;
+			}
+			seen[c-'a'] = true;
+		}
+		return ' ';
+	}
+ }

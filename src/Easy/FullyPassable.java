@@ -87,3 +87,39 @@ public static Map<String, List<Integer>> findPassable(String[][] grid) {
 }
 
 */
+
+class Sol6 {
+	public Map<String, List<Integer>> passable(char[][] grid) {
+		List<Integer> rows = new ArrayList();
+		List<Integer> cols = new ArrayList();
+		Map<String, List<Integer>> result = new HashMap();
+		for(int i=0; i<grid.length; i++) {
+			boolean passable = true;
+			for(int j=0;j<grid[0].length; j++) {
+				if(grid[i][j] == '0') {
+					passable = false;
+					break;
+				}
+			}
+			if(passable) {
+				rows.add(i);
+			}
+		}
+		
+		for(int i=0; i<grid[0].length; i++) {
+			boolean passable = true;
+			for(int j=0;j<grid.length; j++) {
+				if(grid[j][i] == '0') {
+					passable = false;
+					break;
+				}
+			}
+			if(passable) {
+				cols.add(i);
+			}
+		}
+		result.put("rows", rows);
+		result.put("columns", cols);
+		return result;
+	}
+}
